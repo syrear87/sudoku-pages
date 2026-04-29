@@ -5,74 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>개인정보 처리방침 · Privacy Policy — Sudoku</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.55; max-width: 42rem; margin: 0 auto; padding: 1.25rem; color: #1a1a1a; }
-    h1 { font-size: 1.35rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.05rem; margin-top: 1.5rem; }
-    p, li { font-size: 0.95rem; color: #333; }
-    .muted { color: #666; font-size: 0.85rem; }
-    hr { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
-    a { color: #2563eb; }
+    :root {
+      --bg: #FBF6EF;
+      --card: #FFFFFF;
+      --ink: #2A2118;
+      --ink-soft: #5A4A3D;
+      --ink-muted: #8A7A6A;
+      --accent: #B07A63;
+      --accent-soft: rgba(215, 168, 115, 0.16);
+      --line: rgba(42, 33, 24, 0.08);
+      --line-strong: rgba(42, 33, 24, 0.14);
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A140F;
+        --card: #221A14;
+        --ink: #F2EAD9;
+        --ink-soft: #C9BBA8;
+        --ink-muted: #8A7A6A;
+        --accent: #D7A873;
+        --accent-soft: rgba(215, 168, 115, 0.14);
+        --line: rgba(255, 255, 255, 0.08);
+        --line-strong: rgba(255, 255, 255, 0.14);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    .nav {
+      display: flex; flex-wrap: wrap; gap: 6px 10px;
+      font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
+    }
+    .nav a { color: var(--ink-muted); text-decoration: none; padding: 4px 8px; border-radius: 8px; }
+    .nav a:hover, .nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
+    .nav span { color: var(--line-strong); user-select: none; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 26px;
+      box-shadow: 0 1px 2px rgba(42, 33, 24, 0.04);
+    }
+    h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -0.01em; }
+    h2 {
+      font-size: 16px; margin: 28px 0 8px; letter-spacing: -0.005em;
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    h2::before {
+      content: ""; display: inline-block;
+      width: 4px; height: 14px; border-radius: 2px;
+      background: var(--accent); transform: translateY(2px);
+    }
+    p, li { font-size: 14.5px; color: var(--ink-soft); margin: 6px 0; }
+    ul { padding-left: 20px; }
+    ul li { margin: 4px 0; }
+    strong { color: var(--ink); font-weight: 600; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms ease; }
+    a:hover { border-bottom-color: var(--accent); }
+    .muted { color: var(--ink-muted); font-size: 12.5px; margin: 0 0 18px; }
+    hr { border: none; border-top: 1px solid var(--line); margin: 36px 0 28px; }
+    .footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 12px; text-align: center; }
   </style>
 </head>
 <body>
-  <h1>개인정보 처리방침</h1>
-  <p class="muted">최종 업데이트: 2026-04-24</p>
+  <main class="wrap">
+    <nav class="nav" aria-label="Legal">
+      <a href="../">Sudoku</a><span>/</span>
+      <a href="../terms/">이용약관</a>
+      <span>·</span>
+      <a href="./" aria-current="page">개인정보처리방침</a>
+      <span>·</span>
+      <a href="../licenses/">오픈소스</a>
+      <span>·</span>
+      <a href="../support/">지원</a>
+    </nav>
 
-  <h2>1. 개요</h2>
-  <p>본 방침은 Sudoku 앱이 처리할 수 있는 정보와 그 목적을 설명합니다. 앱은 계정 가입 없이 이용할 수 있습니다.</p>
+    <article class="card">
+      <h1>개인정보 처리방침</h1>
+      <p class="muted">최종 업데이트: 2026-04-29</p>
 
-  <h2>2. 기기에 저장되는 정보</h2>
-  <p>게임 진행(스테이지 클리어, 통계, 설정, 하트·힌트 수 등)은 주로 기기 로컬 및 Apple이 제공하는 저장소(UserDefaults, iCloud Key-Value Storage 등)에 저장될 수 있습니다. 동일 Apple ID로 iCloud를 사용하는 경우 일부 값이 기기 간 동기화될 수 있습니다.</p>
+      <h2>1. 개요</h2>
+      <p>본 방침은 Sudoku 앱이 처리할 수 있는 정보와 그 목적을 설명합니다. 앱은 별도의 계정 가입 없이 이용할 수 있습니다.</p>
 
-  <h2>3. 광고 및 분석 (비구독 사용자)</h2>
-  <p>무료 이용 시 Google AdMob을 통해 광고가 표시될 수 있습니다. 맞춤형 광고에 동의하는 경우 Apple의 App Tracking Transparency(ATT) 프롬프트에 따라 광고 식별자 사용이 허용될 수 있으며, EU/EEA 등에서는 Google User Messaging Platform(UMP) 동의 절차가 표시될 수 있습니다. 광고 파트너의 데이터 처리는 각 사업자의 정책을 따릅니다.</p>
+      <h2>2. 기기에 저장되는 정보</h2>
+      <p>게임 진행(스테이지 클리어, 통계, 설정, 하트·힌트 수 등)은 주로 기기 로컬 및 Apple이 제공하는 저장소(UserDefaults, iCloud Key-Value Storage 등)에 저장될 수 있습니다. 동일 Apple ID로 iCloud를 사용하는 경우 일부 값이 기기 간 동기화될 수 있습니다.</p>
 
-  <h2>4. 인앱 구매</h2>
-  <p>구독 및 소비형 구매는 Apple의 App Store를 통해 처리되며, 결제 정보는 Apple이 관리합니다. 본 앱은 Apple이 제공하는 거래 영수증 검증 범위 내에서 구독 상태를 판단합니다.</p>
+      <h2>3. 광고 및 분석 (비구독 사용자)</h2>
+      <p>무료 이용 시 Google AdMob을 통해 광고가 표시될 수 있습니다. 맞춤형 광고에 동의하는 경우 Apple의 App Tracking Transparency(ATT) 프롬프트에 따라 광고 식별자 사용이 허용될 수 있으며, EU/EEA 등에서는 Google User Messaging Platform(UMP) 동의 절차가 표시될 수 있습니다. 광고 파트너의 데이터 처리는 각 사업자의 정책을 따릅니다.</p>
 
-  <h2>5. 제3자 서비스</h2>
-  <ul>
-    <li>Google Mobile Ads SDK (광고)</li>
-    <li>Google User Messaging Platform (동의 관리, 해당 지역 시)</li>
-    <li>Apple App Store / StoreKit (결제)</li>
-    <li>Apple iCloud (선택적 키-값 동기화)</li>
-  </ul>
+      <h2>4. 인앱 구매</h2>
+      <p>구독 및 소비형 구매는 Apple의 App Store를 통해 처리되며, 결제 정보는 Apple이 관리합니다. 본 앱은 Apple이 제공하는 거래 영수증 검증 범위 내에서 구독 상태를 판단합니다.</p>
 
-  <h2>6. 보유 및 삭제</h2>
-  <p>앱을 삭제하면 기기 로컬 데이터는 제거됩니다. iCloud에 저장된 키-값은 사용자의 iCloud 설정에 따라 유지 또는 삭제됩니다. 광고·결제 관련 로그는 각 서비스 제공자의 보관 정책을 따릅니다.</p>
+      <h2>5. 제3자 서비스</h2>
+      <ul>
+        <li>Google Mobile Ads SDK (광고)</li>
+        <li>Google User Messaging Platform (동의 관리, 해당 지역 시)</li>
+        <li>Apple App Store / StoreKit (결제)</li>
+        <li>Apple iCloud (선택적 키-값 동기화)</li>
+      </ul>
 
-  <h2>7. 문의</h2>
-  <p>앱 관련 문의: <a href="mailto:syrear87@gmail.com">syrear87@gmail.com</a></p>
+      <h2>6. 보유 및 삭제</h2>
+      <p>앱을 삭제하면 기기 로컬 데이터는 제거됩니다. iCloud에 저장된 키-값은 사용자의 iCloud 설정에 따라 유지 또는 삭제됩니다. 광고·결제 관련 로그는 각 서비스 제공자의 보관 정책을 따릅니다.</p>
 
-  <hr />
+      <h2>7. 문의</h2>
+      <p>앱 관련 문의: <a href="mailto:syrear87@gmail.com">syrear87@gmail.com</a></p>
 
-  <h1 lang="en">Privacy Policy (English)</h1>
-  <p class="muted">Last updated: 2026-04-24</p>
+      <hr />
 
-  <h2>1. Overview</h2>
-  <p>This policy describes information that the Sudoku app may process. The app does not require you to create an account.</p>
+      <h1 lang="en">Privacy Policy</h1>
+      <p class="muted">Last updated: 2026-04-29</p>
 
-  <h2>2. Data stored on your device</h2>
-  <p>Gameplay progress (clears, statistics, settings, hearts, hints, etc.) is stored primarily on your device and may use Apple-provided storage (UserDefaults, iCloud Key-Value Storage). If you use iCloud with the same Apple ID, some values may sync across your devices.</p>
+      <h2 lang="en">1. Overview</h2>
+      <p lang="en">This policy describes information that the Sudoku app may process. The app does not require you to create an account.</p>
 
-  <h2>3. Advertising &amp; analytics (non-subscribers)</h2>
-  <p>When ads are shown, Google AdMob may process data as described by Google. If you allow App Tracking Transparency (ATT), identifiers may be used for personalized ads. In applicable regions, Google User Messaging Platform (UMP) may collect consent.</p>
+      <h2 lang="en">2. Data stored on your device</h2>
+      <p lang="en">Gameplay progress (clears, statistics, settings, hearts, hints, etc.) is stored primarily on your device and may use Apple-provided storage (UserDefaults, iCloud Key-Value Storage). If you use iCloud with the same Apple ID, some values may sync across your devices.</p>
 
-  <h2>4. In-app purchases</h2>
-  <p>Purchases are processed by Apple via the App Store. The app checks subscription entitlements using StoreKit; payment card data is not handled by the developer.</p>
+      <h2 lang="en">3. Advertising &amp; analytics (non-subscribers)</h2>
+      <p lang="en">When ads are shown, Google AdMob may process data as described by Google. If you allow App Tracking Transparency (ATT), identifiers may be used for personalized ads. In applicable regions, Google User Messaging Platform (UMP) may collect consent.</p>
 
-  <h2>5. Third-party services</h2>
-  <ul>
-    <li>Google Mobile Ads SDK</li>
-    <li>Google User Messaging Platform (where applicable)</li>
-    <li>Apple App Store / StoreKit</li>
-    <li>Apple iCloud (optional key-value sync)</li>
-  </ul>
+      <h2 lang="en">4. In-app purchases</h2>
+      <p lang="en">Purchases are processed by Apple via the App Store. The app checks subscription entitlements using StoreKit; payment card data is not handled by the developer.</p>
 
-  <h2>6. Retention &amp; deletion</h2>
-  <p>Uninstalling the app removes on-device data. iCloud key-value data follows your iCloud account settings. Ad and payment providers retain data under their own policies.</p>
+      <h2 lang="en">5. Third-party services</h2>
+      <ul lang="en">
+        <li>Google Mobile Ads SDK</li>
+        <li>Google User Messaging Platform (where applicable)</li>
+        <li>Apple App Store / StoreKit</li>
+        <li>Apple iCloud (optional key-value sync)</li>
+      </ul>
 
-  <h2>7. Contact</h2>
-  <p><a href="mailto:syrear87@gmail.com">syrear87@gmail.com</a></p>
+      <h2 lang="en">6. Retention &amp; deletion</h2>
+      <p lang="en">Uninstalling the app removes on-device data. iCloud key-value data follows your iCloud account settings. Ad and payment providers retain data under their own policies.</p>
+
+      <h2 lang="en">7. Contact</h2>
+      <p lang="en"><a href="mailto:syrear87@gmail.com">syrear87@gmail.com</a></p>
+
+      <p class="footer">© 2026 Syusyumarion. All rights reserved.</p>
+    </article>
+  </main>
 </body>
 </html>

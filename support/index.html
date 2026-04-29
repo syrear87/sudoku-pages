@@ -1,52 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>지원</title>
-    <style>
-      :root { color-scheme: light; }
-      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-      .wrap { max-width: 860px; margin: 0 auto; padding: 40px 18px; }
-      .card { background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 16px; padding: 18px; }
-      h1 { margin: 0 0 10px; font-size: 24px; }
-      h2 { margin: 18px 0 8px; font-size: 16px; }
-      p, li { line-height: 1.6; color: rgba(0,0,0,.78); }
-      a { color: #B07A63; text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      code { background: rgba(0,0,0,.05); padding: 2px 6px; border-radius: 6px; }
-      .links { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 10px; }
-      .links a { padding: 8px 10px; background: rgba(215,168,115,.14); border-radius: 10px; }
-      .fine { margin-top: 18px; font-size: 12px; color: rgba(0,0,0,.55); }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <div class="card">
-        <h1>지원</h1>
-        <p>불편/문의/제안이 있으면 아래 채널로 연락해주세요.</p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>지원 · Support — Sudoku</title>
+  <style>
+    :root {
+      --bg: #FBF6EF;
+      --card: #FFFFFF;
+      --ink: #2A2118;
+      --ink-soft: #5A4A3D;
+      --ink-muted: #8A7A6A;
+      --accent: #B07A63;
+      --accent-soft: rgba(215, 168, 115, 0.16);
+      --line: rgba(42, 33, 24, 0.08);
+      --line-strong: rgba(42, 33, 24, 0.14);
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A140F;
+        --card: #221A14;
+        --ink: #F2EAD9;
+        --ink-soft: #C9BBA8;
+        --ink-muted: #8A7A6A;
+        --accent: #D7A873;
+        --accent-soft: rgba(215, 168, 115, 0.14);
+        --line: rgba(255, 255, 255, 0.08);
+        --line-strong: rgba(255, 255, 255, 0.14);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    .nav {
+      display: flex; flex-wrap: wrap; gap: 6px 10px;
+      font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
+    }
+    .nav a { color: var(--ink-muted); text-decoration: none; padding: 4px 8px; border-radius: 8px; }
+    .nav a:hover, .nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
+    .nav span { color: var(--line-strong); user-select: none; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 26px;
+      box-shadow: 0 1px 2px rgba(42, 33, 24, 0.04);
+    }
+    h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -0.01em; }
+    .lede { color: var(--ink-soft); margin: 0 0 18px; font-size: 14.5px; }
+    h2 {
+      font-size: 16px; margin: 28px 0 8px; letter-spacing: -0.005em;
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    h2::before {
+      content: ""; display: inline-block;
+      width: 4px; height: 14px; border-radius: 2px;
+      background: var(--accent); transform: translateY(2px);
+    }
+    p, li { font-size: 14.5px; color: var(--ink-soft); margin: 6px 0; }
+    ul { padding-left: 20px; }
+    ul li { margin: 4px 0; }
+    strong { color: var(--ink); font-weight: 600; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms ease; }
+    a:hover { border-bottom-color: var(--accent); }
+    .contact {
+      display: grid; gap: 10px;
+      grid-template-columns: 1fr;
+      margin-top: 12px;
+    }
+    @media (min-width: 540px) { .contact { grid-template-columns: 1fr 1fr; } }
+    .contact a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; border-radius: 12px;
+      background: var(--accent-soft); color: var(--accent);
+      border: 1px solid transparent;
+    }
+    .contact a:hover { border-color: var(--accent); border-bottom-color: var(--accent); }
+    .contact .label { font-size: 12px; color: var(--ink-muted); display: block; margin-bottom: 2px; }
+    .contact .value { font-size: 14.5px; color: var(--ink); font-weight: 600; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .links a {
+      padding: 8px 12px; border-radius: 10px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+    .links a:hover { border-bottom-color: transparent; background: var(--accent); color: var(--card); }
+    .footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav class="nav" aria-label="Legal">
+      <a href="../">Sudoku</a><span>/</span>
+      <a href="../terms/">이용약관</a>
+      <span>·</span>
+      <a href="../privacy/">개인정보처리방침</a>
+      <span>·</span>
+      <a href="../licenses/">오픈소스</a>
+      <span>·</span>
+      <a href="./" aria-current="page">지원</a>
+    </nav>
 
-        <h2>문의</h2>
-        <ul>
-          <li>이슈 등록(권장): <a href="https://github.com/syrear87/sudoku/issues">GitHub Issues</a></li>
-          <li>이메일: <code>syrear87@gmail.com</code></li>
-        </ul>
+    <article class="card">
+      <h1>지원</h1>
+      <p class="lede">불편한 점, 문의, 제안이 있으시면 아래 채널로 연락해주세요. 가능한 빠르게 답변드리겠습니다.</p>
 
-        <h2>결제/구독</h2>
-        <ul>
-          <li>결제/구독/환불은 App Store 정책을 따릅니다.</li>
-          <li>“구매 복원”은 앱 내 상점 화면에서 이용할 수 있습니다.</li>
-        </ul>
-
-        <h2>법적 고지</h2>
-        <div class="links">
-          <a href="../privacy/">개인정보처리방침</a>
-          <a href="../terms/">이용약관</a>
-          <a href="../licenses/">오픈소스 고지</a>
-        </div>
-        <p class="fine">Copyright © 2025 Syusyumarion All rights reserved.</p>
+      <h2>문의 채널</h2>
+      <div class="contact">
+        <a href="mailto:syrear87@gmail.com">
+          <div>
+            <span class="label">이메일</span>
+            <span class="value">syrear87@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://github.com/syrear87/sudoku/issues">
+          <div>
+            <span class="label">이슈 등록</span>
+            <span class="value">GitHub Issues</span>
+          </div>
+        </a>
       </div>
-    </main>
-  </body>
-</html>
 
+      <h2>결제 / 구독</h2>
+      <ul>
+        <li>결제·구독·환불은 Apple App Store 정책을 따릅니다. 환불은 <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>에서 신청할 수 있습니다.</li>
+        <li>구독 관리·해지는 기기의 <strong>설정 → Apple ID → 구독</strong>에서 가능합니다.</li>
+        <li>"구매 복원"은 앱 내 상점 화면에서 이용할 수 있습니다.</li>
+      </ul>
+
+      <h2>자주 묻는 질문</h2>
+      <ul>
+        <li><strong>하트가 회복되지 않아요.</strong> 일정 시간이 지나면 자동 회복되며, 광고 시청이나 구독을 통해서도 충전할 수 있습니다.</li>
+        <li><strong>진행 데이터를 다른 기기로 옮길 수 있나요?</strong> 동일 Apple ID로 iCloud에 로그인되어 있으면 일부 데이터가 자동 동기화됩니다.</li>
+        <li><strong>광고를 제거하려면?</strong> 앱 내 상점에서 프리미엄 구독을 이용해주세요.</li>
+      </ul>
+
+      <h2>법적 고지</h2>
+      <div class="links">
+        <a href="../privacy/">개인정보처리방침</a>
+        <a href="../terms/">이용약관</a>
+        <a href="../licenses/">오픈소스 고지</a>
+      </div>
+
+      <p class="footer">© 2026 Syusyumarion. All rights reserved.</p>
+    </article>
+  </main>
+</body>
+</html>
